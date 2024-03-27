@@ -1,7 +1,6 @@
 import TodoListItem from "./TodoListItem"
 
-const TodoList = (props) => {
-    const { todoList } = props;
+const TodoList = ({ todoList }) => {
 
   return (
     <div>
