@@ -100,7 +100,7 @@ function App() {
             path="*"
             element={
               <>
-                <h1>Todo List</h1>
+                <h1 style={{ color: "blue" }}>Todo List</h1>
                 <AddTodoForm onAddTodo={handleAddTodo} />
                 {isLoading ? (
                   <p>Loading...</p>

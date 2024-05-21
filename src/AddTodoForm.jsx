@@ -26,10 +26,25 @@ const AddTodoForm = ({ onAddTodo }) => {
   return (
     <div>
       <form onSubmit={handleAddTodo}>
-        <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>
+        <InputWithLabel
+          todoTitle={todoTitle}
+          handleTitleChange={handleTitleChange}
+        >
           Title
         </InputWithLabel>
-        <button type="submit" style={{ marginLeft: "5px" }}>
+        <button
+          type="submit"
+          style={{
+            marginLeft: "5px",
+            background: "green",
+            color: "white",
+            padding: 2,
+            width: 100,
+            height: 25,
+            borderRadius: 8,
+            border: "none",
+          }}
+        >
           Add
         </button>
       </form>

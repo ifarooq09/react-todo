@@ -8,7 +8,7 @@ const InputWithLabel = ({ children, todoTitle, handleTitleChange}) => {
     },[inputRef])
   return (
     <>
-      <label htmlFor="todoTitle">{children}: </label>
+      <label htmlFor="todoTitle" style={{ color: "blue" }}>{children}: </label>
       <input
         id="todoTitle"
         type="text"
@@ -16,6 +16,7 @@ const InputWithLabel = ({ children, todoTitle, handleTitleChange}) => {
         value={todoTitle}
         onChange={handleTitleChange}
         ref={inputRef}
+        style={{ height: 20 }}
       />
     </>
   );
