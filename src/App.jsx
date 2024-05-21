@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
+import './style.css'; // Import the CSS file
 
 async function fetchData() {
   const options = {
@@ -93,14 +94,14 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route
             path="*"
             element={
               <>
-                <h1 style={{ color: "blue" }}>Todo List</h1>
+                <h1>Todo List</h1>
                 <AddTodoForm onAddTodo={handleAddTodo} />
                 {isLoading ? (
                   <p>Loading...</p>
@@ -120,7 +121,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

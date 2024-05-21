@@ -1,0 +1,75 @@
+/* App.css */
+
+/* Load a font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333; /* Default text color */
+  font-family: 'Roboto', sans-serif; /* Google Font */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #2c3e50; /* Custom color for headings */
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+button {
+  margin-top: 10px;
+  background: #27ae60; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #219150; /* Darker green on hover */
+}
+
+label {
+  color: #2c3e50; /* Custom label color */
+}
+
+input {
+  height: 30px;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.nav-item {
+  padding: 10px 15px;
+  margin: 5px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+}
