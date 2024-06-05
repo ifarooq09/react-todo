@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
+import './style.css'; // Ensure this file also imports the CSS
 
-const InputWithLabel = ({ children, todoTitle, handleTitleChange}) => {
-    const inputRef = useRef();
+const InputWithLabel = ({ children, todoTitle, handleTitleChange }) => {
+  const inputRef = useRef();
 
-    useEffect(() => {
-        inputRef.current.focus();
-    },[inputRef])
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <>
       <label htmlFor="todoTitle">{children}: </label>

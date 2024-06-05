@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
+import './style.css'; // Import the CSS file
 
 async function fetchData() {
   const options = {
@@ -93,7 +94,7 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route
@@ -120,7 +121,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
