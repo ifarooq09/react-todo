@@ -14,7 +14,7 @@ async function fetchData() {
 
   const url = `https://api.airtable.com/v0/${
     import.meta.env.VITE_AIRTABLE_BASE_ID
-  }/${import.meta.env.VITE_TABLE_NAME}`;
+  }/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view`;
 
   try {
     const response = await fetch(url, options);
@@ -24,13 +24,10 @@ async function fetchData() {
     }
 
     const data = await response.json();
-
-    const todos = data.records.map((record) => ({
+    return data.records.map((record) => ({
       title: record.fields.title,
       id: record.id,
     }));
-
-    return todos;
   } catch (error) {
     console.error(error.message);
     throw new Error("Failed to fetch data from the server.");
@@ -69,6 +66,7 @@ async function addTodo(newTodo) {
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     fetchData()
@@ -88,6 +86,20 @@ function App() {
     }
   };
 
+  const handleSortOrderChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  const sortedTodoList = todoList.slice().sort((objectA, objectB) => {
+    const titleA = objectA.title.toUpperCase();
+    const titleB = objectB.title.toUpperCase();
+    if (sortOrder === 'asc') {
+      return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+    } else {
+      return titleA > titleB ? -1 : titleA < titleB ? 1 : 0;
+    }
+  });
+
   const removeTodo = (id) => {
     const newTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(newTodoList);
@@ -103,10 +115,17 @@ function App() {
               <>
                 <h1>Todo List</h1>
                 <AddTodoForm onAddTodo={handleAddTodo} />
+                <label>
+                  Sort Order:
+                  <select value={sortOrder} onChange={handleSortOrderChange}>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                  </select>
+                </label>
                 {isLoading ? (
                   <p>Loading...</p>
                 ) : (
-                  <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                  <TodoList todoList={sortedTodoList} onRemoveTodo={removeTodo} />
                 )}
               </>
             }
