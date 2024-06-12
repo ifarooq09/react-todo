@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"; // Import PropTypes
+
 const TodoListItem = ({ todo, onRemoveTodo }) => {
   return (
     <div>
@@ -22,6 +24,15 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
       </li>
     </div>
   );
+};
+
+// Define propTypes for TodoListItem
+TodoListItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
